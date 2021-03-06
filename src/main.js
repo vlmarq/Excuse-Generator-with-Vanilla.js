@@ -6,6 +6,7 @@ import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
 window.onload = function() {
+  // Excuse Array
   let who = ["A one-legged parrot", "My dog", "My nosy neighbor", "A cop"];
   let action = ["broke", "stole", "ran over", "hid"];
   let what = ["my laptop", "the keys", "the car"];
@@ -20,6 +21,7 @@ window.onload = function() {
   const min = 0;
   const space = " ";
 
+  // Gets random number between 0 and length of array
   function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
   }
@@ -29,6 +31,7 @@ window.onload = function() {
   let what_value = getRndInteger(min, what.length);
   let when_value = getRndInteger(min, when.length);
 
+  // Sentence constructor
   let sentence =
     who[who_value] +
     space +
@@ -39,17 +42,21 @@ window.onload = function() {
     when[when_value] +
     ".";
 
+  // Modifies h1 tag with 'excuse' ID and returns a random sentence
+  document.querySelector("h1").innerHTML = "Why am I late? Uh, well...";
+
+  // Modifies p tag with 'excuse' ID and returns a random sentence
   document.querySelector("#excuse").innerHTML = sentence;
 
-  document.querySelector("#excuse").animate(
-    [
-      // keyframes
-      { transform: "rotate(360deg)" }
-    ],
-    {
-      // timing options
-      duration: 1000,
-      iterations: 1
+  // Random color generator for background
+  function generateRandomColor() {
+    var letters = "0123456789ABCDEF";
+    var color = "#";
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
     }
-  );
+    return color;
+  }
+  // Change background color
+  document.body.style.backgroundColor = generateRandomColor();
 };
